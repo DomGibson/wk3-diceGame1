@@ -1,36 +1,47 @@
-// Player name
-var player1 = "Player 1";
-var player2 = "Player 2";
+let scores, roundScore, activePlayer, dice, gamePlaying = true;
 
-// Function to change the player name
-function namesChange() {
-    player1 = prompt("Change Player1 name");
-    player2 = prompt("Change player2 name");
+document.querySelector('.player-0-panel').classList.add('active');
+function init() 
+{
+    roundScore = 0;
+    activePlayer = 0;
+    gamePlaying = true;
+    document.querySelector('.dice').style.display = 'none';
 
-    document.querySelector("p.Player1").innerHTML = player1;
-    document.querySelector("p.Player2").innerHTML = player2;
+    document.getElementById('score-0').textContent = '0';
+
+    document.getElementById('name-0').textContent = 'Player';
+
+    document.querySelector('.player-0-panel').classList.remove('winner');
+
 }
 
-// Function to roll the dice
-function rollDice() {
-    setTimeout(function () {
-        var randomNumber1 = Math.floor(Math.random() * 6) + 1;
-        var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+init();
 
-        document.querySelector(".img1").setAttribute("src",
-            "/diceGame/dice/d" + randomNumber1 + ".png");
+    
+roundScore = 0;
+document.getElementById('score-0').textContent = '0';
+document.querySelector('.player-0-panel').classList.toggle('active');
+document.querySelector('.dice').style.display = 'none';
 
-        document.querySelector(".img2").setAttribute("src",
-            "/diceGame/dice/d" + randomNumber2 + ".png");
-
-        if (randomNumber1 === randomNumber2) {
-            document.querySelector("h1").innerHTML = "Draw!";
-        } else if (randomNumber1 < randomNumber2) {
-            document.querySelector("h1").innerHTML
-                            = (player2 + " WINS!");
-        } else {
-            document.querySelector("h1").innerHTML
-                            = (player1 + " WINS!");
+document.querySelector('.btn-new').addEventListener('click', init);
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    if(gamePlaying) {
+        let dice = Math.floor(Math.random() * 6) + 1;
+        let diceDOM = document.querySelector('.dice');
+        diceDOM.style.display = 'block';
+        diceDOM.src = './dice/d' + dice + '.png';
+    
+        if (dice !== 1){
+            roundScore += dice;
+            document.querySelector('#score-' + activePlayer).textContent = roundScore;
+            document.getElementById('current-0').textContent = `${Math.max(roundScore)}`;
         }
-    }, 500);
-}
+        else if (roundScore >= 20) {
+            init()
+        }
+        else {
+            init()
+        }
+    }
+});

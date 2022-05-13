@@ -1,52 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content=
-		"width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/diceGame/styles.css">
-    <title>Dice Game</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Dice Game Thingamajig</title>
 </head>
-
 <body>
 
-    <div class="hero-image">
-        <div class="main-box">
-            <div class="container">
-                <h1>Let's Play</h1>
-
-                <div class="dice">
-                    <p class="Player1">Player 1</p>
-                        <div class="dice-block">
-                            <img class="img1" src="/diceGame/dice/d6.png">
-                        </div>
-                </div>
-
-                <div class="dice">
-                    <p class="Player2">Player 2</p>
-                    <div class="dice-block">
-                        <img class="img2" src="dice/d6.png">
-                    </div>
-                    
-                </div>
+    <div class="container fix">
+        <div class="player-0-panel active">
+            <div class="player-name" id="name-0">P1</div>
+            <div class="player-score" id="score-0">0</div>
+            <div class="player-current-box-1">
+                <div class="player-current-score" id="current-0">11</div>
+                <button class="btn-new">New game</button>
+                <button class="btn-roll">Roll dice</button>
+                <button class="btn-hold">HOLD!!</button>
+            </div>
+            <div class="test-cont">
+                <img src="dice/d6.png" alt="Dice" class="dice" />
             </div>
 
-            <div class="bottom">
-                <button type="button" class="butn"
-                    onClick="rollDice()">
-                    Roll the Dice
-                </button>
-            </div>
-            <div class="bottom">
-                <button type="button" class="butn"
-                    onClick="nameChange()">
-                    Edit Names
-                </button>
-            </div>
         </div>
+    </div>
 
-    <script src="/diceGame/app.js"></script>
+    <script src="app.js"></script>    
 </body>
-
 </html>
